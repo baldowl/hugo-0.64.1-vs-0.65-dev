@@ -1,0 +1,13 @@
+{{ define "main" }}
+  {{ partial "breadcrumb" . }}
+  <article>
+    <header>
+      <h1 class="title">{{ .Title }}</h1>
+    </header>
+    {{ range .Data.Terms.Alphabetical }}
+      {{ with .Page }}
+        <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+      {{ end }}
+    {{ end }}
+  </article>
+{{ end }}

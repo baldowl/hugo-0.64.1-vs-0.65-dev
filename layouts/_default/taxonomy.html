@@ -1,0 +1,11 @@
+{{ define "main" }}
+  {{ partial "breadcrumb" . }}
+  <article>
+    <header>
+      <h1 class="title">{{ .Title }}</h1>
+    </header>
+    {{ range .Pages.ByDate.Reverse }}
+      <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+    {{ end }}
+  </article>
+{{ end }}

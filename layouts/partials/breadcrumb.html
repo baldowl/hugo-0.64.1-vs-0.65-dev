@@ -1,0 +1,15 @@
+{{ define "crumbs" }}
+  {{ if .currentPage.Parent }}
+    {{ template "crumbs" (dict "currentPage" .currentPage.Parent "startingPage" .startingPage) }}
+  {{ end }}
+  {{ if .currentPage.IsHome }}
+    <li><a href="/">Home</a></li>
+  {{ else }}
+    <li{{ if (eq .currentPage .startingPage) }} class="is-active"><a>{{ else }}><a href="{{ .currentPage.RelPermalink }}">{{ end }}{{ .currentPage.Title }}</a></li>
+  {{ end }}
+{{ end }}
+<nav>
+  <ul>
+    {{ template "crumbs" (dict "currentPage" . "startingPage" .) }}
+  </ul>
+</nav>
